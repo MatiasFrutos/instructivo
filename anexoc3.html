@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Anexo C3 — Verificación de potencia de radioenlace</title>
+  <meta name="description" content="Cómo verificar la potencia/calidad de señal en B311: LED frontal, panel web (192.168.8.1), RSRP/RSRQ/SINR y apps móviles." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root{
+      --white:#ffffff; --black:#111111; --yellow:#ffd400; --red:#e10600;
+      --line:#ececec; --muted:#444; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--white); color:var(--black);
+      font:400 16px/1.55 system-ui, Inter, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    h1,h2,h3{margin:0; line-height:1.2}
+    p{margin:.4rem 0}
+    a{color:inherit; text-decoration:none}
+    .muted{color:var(--muted)}
+
+    .max{max-width:1100px; margin-inline:auto; padding:20px}
+    @media (min-width:760px){ .max{padding:28px} }
+    .section{margin-block:22px}
+    @media (min-width:760px){ .section{margin-block:28px} }
+
+    /* HERO */
+    header.hero{border-bottom:3px solid var(--yellow); background:var(--white)}
+    .hero-row{display:grid; gap:12px; align-items:center; grid-template-columns:auto 1fr; padding-block:10px}
+    .title-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .logo{width:120px; height:120px; border-radius:12px; object-fit:contain; border:1px solid var(--line)}
+    @media (max-width:480px){ .logo{width:96px; height:96px} }
+    h1{font-size: clamp(24px, 5.2vw, 40px)}
+    .brand{display:inline-flex; align-items:center; gap:8px; font-weight:800; background:var(--yellow); color:var(--black); padding:6px 12px; border-radius:999px}
+    .sub{color:var(--muted); margin-top:4px}
+
+    /* Botones */
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; font-weight:800; border-radius:12px; border:2px solid var(--yellow); background:var(--yellow); color:var(--black)}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px}
+
+    /* Tarjetas */
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    @media (min-width:760px){ .card{padding:22px} }
+
+    /* Lista y callouts */
+    .list{margin-top:8px; padding-left:18px}
+    .callout{border:1px solid var(--yellow); background:#fffdf0; border-radius:12px; padding:12px; font-weight:700; margin-top:10px}
+    .danger{border-color:var(--red); background:#fff4f4}
+
+    /* Etiquetas */
+    .k{display:inline-flex; gap:6px; align-items:center; font-weight:800; font-size:12.5px; padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:#fff}
+
+    /* Tabla de valores RSRP/RSRQ/SINR */
+    .tbl{width:100%; border-collapse:collapse; margin-top:10px; font-size:14px}
+    .tbl th,.tbl td{border:1px solid var(--line); padding:10px}
+    .tbl th{background:#fffdf0}
+    footer{border-top:1px solid var(--line); text-align:center; font-size:14px; color:var(--muted); margin-top:28px; padding:16px}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="max hero-row">
+      <img class="logo" src="logo.png" alt="Logo de la empresa">
+      <div>
+        <div class="title-row">
+          <h1>Anexo C3 — Verificación de potencia</h1>
+          <span class="brand">Radioenlace</span>
+        </div>
+        <p class="sub">Comprobación básica por LED, consulta en panel web (192.168.8.1) y lectura técnica de RSRP/RSRQ/SINR.</p>
+        <div class="btnrow" style="margin-top:8px">
+          <a class="btn" href="index.html" aria-label="Volver al índice">← Volver al índice</a>
+          <button class="btn" onclick="window.print()">🖨 Imprimir / Guardar PDF</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max" role="main">
+    <!-- Paso 1: LED -->
+    <section class="section card" aria-labelledby="t-led">
+      <h2 id="t-led">Paso 1 — LED frontal (rápido)</h2>
+      <p class="muted">Referencia inicial de señal en el equipo.</p>
+      <ul class="list">
+        <li>1 luz = señal <b>débil</b>.</li>
+        <li>2 luces = señal <b>media</b>.</li>
+        <li>3 luces = señal <b>buena</b>.</li>
+      </ul>
+      <div class="callout">Sirve como orientación, <b>no</b> para diagnóstico fino.</div>
+    </section>
+
+    <!-- Paso 2: Panel web -->
+    <section class="section card" aria-labelledby="t-panel">
+      <h2 id="t-panel">Paso 2 — Panel web del B311</h2>
+      <ol class="list">
+        <li>Conectar una PC o celular al B311 (Wi-Fi o cable).</li>
+        <li>Abrir un navegador y entrar a <b>http://192.168.8.1</b>.</li>
+        <li>Usuario y contraseña por defecto: <b>admin / admin</b> (o la que figura en la etiqueta del router).</li>
+        <li>Ir a <b>Estado / Información de red</b> para ver:
+          <ul class="list">
+            <li>Intensidad de señal (barras).</li>
+            <li>Banda en uso (p. ej., B3, B7, B28).</li>
+            <li>Tipo de red (LTE, HSPA, etc.).</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Paso 3: Valores técnicos -->
+    <section class="section card" aria-labelledby="t-tec">
+      <h2 id="t-tec">Paso 3 — Valores técnicos (precisos)</h2>
+      <p>En <b>Diagnóstico / Device Information</b> consultar RSRP, RSRQ y SINR:</p>
+      <table class="tbl" aria-label="Rangos recomendados">
+        <thead>
+          <tr><th>Parámetro</th><th>Qué indica</th><th>Rango / recomendación</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>RSRP</b></td>
+            <td>Potencia de señal</td>
+            <td>Ideal entre <b>−65 y −95 dBm</b></td>
+          </tr>
+          <tr>
+            <td><b>RSRQ</b></td>
+            <td>Calidad de señal</td>
+            <td>Mejor entre <b>−3 y −9 dB</b></td>
+          </tr>
+          <tr>
+            <td><b>SINR</b></td>
+            <td>Relación señal/ruido</td>
+            <td><b>≥ 10 dB</b> recomendado (más alto es mejor)</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">Estos valores son mucho más confiables que las barritas de señal.</div>
+    </section>
+
+    <!-- Paso 4: Apps -->
+    <section class="section card" aria-labelledby="t-apps">
+      <h2 id="t-apps">Paso 4 — Apps en celular (pruebas de campo)</h2>
+      <p>Con un celular con chip de la misma compañía, medir cobertura aproximada con:</p>
+      <ul class="list">
+        <li>LTE Discovery (Android)</li>
+        <li>Network Cell Info Lite (Android)</li>
+        <li>Cellular-Z (iOS)</li>
+      </ul>
+      <div class="callout danger">No reemplaza la medición en el equipo, solo complementa.</div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="y"></span> — Agronomía Inteligente SRL · CámarasWifi
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

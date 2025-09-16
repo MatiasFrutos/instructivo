@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Anexo C4 — Verificación de tensión (B311)</title>
+  <meta name="description" content="Procedimiento para medir tensión de fuente y entrada en módem B311 y verificar reguladores internos." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root{
+      --white:#ffffff;
+      --black:#111111;
+      --yellow:#ffd400;
+      --red:#e10600;
+      --line:#ececec;
+      --muted:#444;
+      --radius:14px;
+      --shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--white); color:var(--black);
+      font:400 16px/1.55 system-ui, Inter, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    h1,h2,h3,h4{margin:0; line-height:1.2}
+    p{margin:.4rem 0}
+    a{color:inherit; text-decoration:none}
+    .muted{color:var(--muted)}
+
+    .max{max-width:1100px; margin-inline:auto; padding:20px}
+    @media (min-width:760px){ .max{padding:28px} }
+    .section{margin-block:22px}
+    @media (min-width:760px){ .section{margin-block:28px} }
+
+    header.hero{border-bottom:3px solid var(--yellow); background:var(--white)}
+    .hero-row{display:grid; gap:12px; align-items:center; grid-template-columns:auto 1fr; padding-block:10px}
+    .title-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .logo{width:120px; height:120px; border-radius:12px; object-fit:contain; border:1px solid var(--line)}
+    @media (max-width:480px){ .logo{width:96px; height:96px} }
+    h1{font-size: clamp(24px, 5.2vw, 40px)}
+    .brand{display:inline-flex; align-items:center; gap:8px; font-weight:800; background:var(--yellow); color:var(--black); padding:6px 12px; border-radius:999px}
+    .sub{color:var(--muted); margin-top:4px}
+
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; font-weight:800; border-radius:12px; border:2px solid var(--yellow); background:var(--yellow); color:var(--black)}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px}
+
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    @media (min-width:760px){ .card{padding:22px} }
+
+    .list{margin-top:8px; padding-left:18px}
+    .callout{border:1px solid var(--yellow); background:#fffdf0; border-radius:12px; padding:12px; font-weight:700; margin-top:10px}
+    .danger{border-color:var(--red); background:#fff4f4}
+
+    footer{border-top:1px solid var(--line); text-align:center; font-size:14px; color:var(--muted); margin-top:28px; padding:16px}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="max hero-row">
+      <img class="logo" src="logo.png" alt="Logo de la empresa">
+      <div>
+        <div class="title-row">
+          <h1>Anexo C4 — Verificación de tensión</h1>
+          <span class="brand">B311</span>
+        </div>
+        <p class="sub">Procedimiento para medir la salida de la fuente, entrada al módem y (opcional) reguladores internos.</p>
+        <div class="btnrow" style="margin-top:8px">
+          <a class="btn" href="index.html" aria-label="Volver al índice">← Volver al índice</a>
+          <button class="btn" onclick="window.print()">🖨 Imprimir / Guardar PDF</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max" role="main">
+    <!-- Herramientas -->
+    <section class="section card">
+      <h2>Herramientas necesarias</h2>
+      <ul class="list">
+        <li>Multímetro digital (capaz de medir DC).</li>
+        <li>Fuente de alimentación del B311 (12 V DC).</li>
+        <li>Módem B311.</li>
+        <li>Puntas de prueba del multímetro.</li>
+      </ul>
+    </section>
+
+    <!-- Paso 1 -->
+    <section class="section card">
+      <h2>Paso 1 — Verificar la fuente de alimentación</h2>
+      <ol class="list">
+        <li>Desconectar la fuente de la corriente eléctrica y revisar la etiqueta: debe indicar algo como <b>Output: 12V⎓1A</b>.</li>
+        <li>Conectarla a 220 V sin enchufarla al módem.</li>
+        <li>Poner el multímetro en VDC (corriente continua).</li>
+        <li>Punta roja al centro del conector (positivo), punta negra al exterior (negativo).</li>
+        <li>Lectura esperada: <b>≈12V DC</b> (11,5–12,6 V).</li>
+      </ol>
+      <div class="callout danger">Si la tensión no está en rango → la fuente está fallando.</div>
+    </section>
+
+    <!-- Paso 2 -->
+    <section class="section card">
+      <h2>Paso 2 — Medir entrada al router</h2>
+      <p>Con el módem encendido y conectado, medir en el mismo conector trasero (con cuidado de no hacer corto):</p>
+      <ul class="list">
+        <li>Punta roja al centro, punta negra al borde metálico.</li>
+        <li>Lectura esperada: <b>≈12V DC</b>.</li>
+      </ul>
+    </section>
+
+    <!-- Paso 3 -->
+    <section class="section card">
+      <h2>Paso 3 — Verificar reguladores internos (opcional)</h2>
+      <p>Solo para personal con experiencia:</p>
+      <ul class="list">
+        <li>Abrir el módem y ubicar los reguladores de voltaje en la placa.</li>
+        <li>Multímetro en VDC, punta negra al GND de la placa.</li>
+        <li>Punta roja sobre la salida de cada regulador.</li>
+        <li>Valores típicos: 5V, 3.3V, 1.8V (según la etapa).</li>
+      </ul>
+      <div class="callout danger">Cuidado: manipulación indebida puede dañar el equipo.</div>
+    </section>
+
+    <!-- Valores esperados -->
+    <section class="section card">
+      <h2>Valores esperados</h2>
+      <ul class="list">
+        <li><b>Fuente externa:</b> 12V DC nominal.</li>
+        <li><b>Entrada al router:</b> 12V DC.</li>
+        <li><b>Placa interna:</b> 5V, 3.3V, 1.8V según etapa.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="y"></span> — Agronomía Inteligente SRL · CámarasWifi
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

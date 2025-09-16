@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Anexo A1 — Instalación solar integrada (Fija)</title>
+  <meta name="description" content="Manual de instalación para cámara fija solar integrada: advertencias, componentes, anclajes, ensamblado, colocación y buenas prácticas." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root{
+      --white:#ffffff; --black:#111111; --yellow:#ffd400; --red:#e10600;
+      --line:#ececec; --muted:#444; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--white); color:var(--black);
+      font:400 16px/1.55 system-ui, Inter, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    h1,h2,h3{margin:0; line-height:1.2}
+    p{margin:.4rem 0}
+    a{color:inherit; text-decoration:none}
+    .muted{color:var(--muted)}
+    .hint{font-size:.92rem; color:var(--muted)}
+
+    .max{max-width:1100px; margin-inline:auto; padding:20px}
+    @media (min-width:760px){ .max{padding:28px} }
+    .section{margin-block:22px}
+    @media (min-width:760px){ .section{margin-block:28px} }
+
+    /* HERO */
+    header.hero{border-bottom:3px solid var(--yellow); background:var(--white)}
+    .hero-row{display:grid; gap:12px; align-items:center; grid-template-columns:auto 1fr; padding-block:10px}
+    .title-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .logo{width:120px; height:120px; border-radius:12px; object-fit:contain; border:1px solid var(--line)}
+    @media (max-width:480px){ .logo{width:96px; height:96px} }
+    h1{font-size: clamp(24px, 5.2vw, 40px)}
+    .brand{display:inline-flex; align-items:center; gap:8px; font-weight:800; background:var(--yellow); color:var(--black); padding:6px 12px; border-radius:999px}
+    .sub{color:var(--muted); margin-top:4px}
+
+    /* Botones */
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; font-weight:800; border-radius:12px; border:2px solid var(--yellow); background:var(--yellow); color:var(--black)}
+    .btn.ghost{background:#fff}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px}
+
+    /* Tarjetas / grillas */
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    @media (min-width:760px){ .card{padding:22px} }
+    .grid{display:grid; gap:14px}
+    .cols-2{grid-template-columns:1fr}
+    .cols-3{grid-template-columns:1fr}
+    @media (min-width:760px){
+      .cols-2{grid-template-columns:repeat(2,1fr)}
+      .cols-3{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* Steps */
+    .step{border:2px solid var(--yellow); border-radius:12px; padding:14px; display:grid; gap:8px}
+    .step h3{font-size:16px}
+    .list{margin-top:8px; padding-left:18px}
+    .callout{border:1px solid var(--yellow); background:#fffdf0; border-radius:12px; padding:12px; font-weight:700; margin-top:10px}
+    .danger{border-color:var(--red); background:#fff4f4}
+
+    .tbl{width:100%; border-collapse:collapse; font-size:14px; margin-top:8px}
+    .tbl th,.tbl td{border:1px solid var(--line); padding:10px}
+    .tbl th{background:#fffdf0}
+
+    footer{border-top:1px solid var(--line); text-align:center; font-size:14px; color:var(--muted); margin-top:28px; padding:16px}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="max hero-row">
+      <img class="logo" src="logo.png" alt="Logo de la empresa">
+      <div>
+        <div class="title-row">
+          <h1>Anexo A1 — Instalación solar integrada</h1>
+          <span class="brand">Modelo Fija (Bullet)</span>
+        </div>
+        <p class="sub">Procedimiento de montaje, anclajes y colocación de cámara fija con módulo solar integrado.</p>
+        <div class="btnrow" style="margin-top:8px">
+          <a class="btn" href="index.html">← Volver al índice</a>
+          <button class="btn ghost" onclick="window.print()">🖨 Imprimir / Guardar PDF</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max" role="main">
+    <!-- Advertencias -->
+    <section class="section card">
+      <h2>Advertencias de seguridad</h2>
+      <ul class="list">
+        <li>Usar arnés, casco y calzado de seguridad durante toda la instalación.</li>
+        <li>Verificar firmeza del soporte (poste/torre/paretón) y ausencia de tensión eléctrica cercana.</li>
+        <li>No levantar el equipo desde el cuerpo de la cámara; manipular por la base.</li>
+      </ul>
+      <div class="callout danger">Evaluar riesgos del área y presencia de servicios enterrados antes de excavar.</div>
+    </section>
+
+    <!-- Componentes -->
+    <section class="section card">
+      <h2>Componentes del sistema</h2>
+      <ul class="list">
+        <li>Cámara fija (bullet) con módulo solar superior.</li>
+        <li>Base/placa de fijación y herrajes.</li>
+        <li>Abrazaderas metálicas para poste (o tornillería para pared).</li>
+        <li>Manual/guías rápidas del fabricante.</li>
+      </ul>
+    </section>
+
+    <!-- Anclajes -->
+    <section class="section card">
+      <h2>Anclajes recomendados</h2>
+      <div class="grid cols-2" style="margin-top:10px">
+        <div class="step">
+          <h3>En poste</h3>
+          <ul class="list">
+            <li>Abrazaderas de acero galvanizado o precintos metálicos.</li>
+            <li>Apretar de forma cruzada para evitar giro del conjunto.</li>
+          </ul>
+        </div>
+        <div class="step">
+          <h3>En pared</h3>
+          <ul class="list">
+            <li>Tarugos y pernos de expansión adecuados al material (hormigón/ladrillo).</li>
+            <li>Usar arandelas y sellador exterior en perforaciones.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ensamblado -->
+    <section class="section card">
+      <h2>Ensamblado</h2>
+      <ol class="list">
+        <li>Retirar el equipo de la caja manteniendo el panel solar hacia arriba.</li>
+        <li>Presentar la <b>base de fijación</b> en el soporte y marcar perforaciones.</li>
+        <li>Fijar la base; luego colocar el cuerpo de cámara sobre la base y asegurar con la tornillería.</li>
+        <li>Conectar y proteger el cableado (ver Anexo D1: protección anti-cotorras).</li>
+      </ol>
+      <div class="callout">La cámara fija permite ajuste de orientación en azimut y elevación.</div>
+    </section>
+
+    <!-- Colocación y orientación -->
+    <section class="section card">
+      <h2>Colocación y orientación</h2>
+      <p class="hint">Altura recomendada: 5–15 m (según área a cubrir y lente).</p>
+      <ul class="list">
+        <li>Orientar el <b>panel solar al norte</b> con inclinación aproximada de <b>45°</b>.</li>
+        <li>Evitar sombras proyectadas (árboles, estructuras) sobre el panel.</li>
+        <li>Ajustar el encuadre de la cámara al área objetivo y asegurar tornillos.</li>
+      </ul>
+    </section>
+
+    <!-- Recomendaciones para instalación del poste -->
+    <section class="section card">
+      <h2>Recomendaciones para la instalación del poste</h2>
+      <ul class="list">
+        <li>Perforar hasta ~<b>120 cm</b> de profundidad.</li>
+        <li>Colocar cama de <b>grava</b> al fondo para drenaje.</li>
+        <li>Rellenar con <b>cemento</b> hasta 50 mm por debajo de la superficie y rematar con grava.</li>
+        <li><b>No</b> apoyar el poste directamente sobre la base de cemento (evita drenaje).</li>
+      </ul>
+      <p class="hint">Consultar figuras de “instalación correcta/incorrecta” en el manual original.</p>
+    </section>
+
+    <!-- Errores frecuentes (NO instalar así) -->
+    <section class="section card">
+      <h2>Ejemplos de cómo <u>NO</u> instalar</h2>
+      <ul class="list">
+        <li>Altura insuficiente del sistema autónomo (mínimo sugerido: 8 m).</li>
+        <li>Montaje en estructuras inestables o improvisadas.</li>
+        <li>Uso de caños/postes de poco espesor sin ajuste correcto de abrazaderas.</li>
+        <li>Panel solar sin orientación al norte.</li>
+        <li>Instalación bajo árboles o elementos que proyectan sombra sobre el panel.</li>
+      </ul>
+      <img src="a1f-ejemplos-no.png" alt="Ejemplos de instalación incorrecta (modelo Fija)">
+    </section>
+
+    <!-- Símbolos y referencias -->
+    <section class="section card">
+      <h2>Símbolos y otras referencias</h2>
+      <table class="tbl" aria-label="Símbolos del manual">
+        <thead><tr><th>Símbolo</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td>⚠️</td><td>Advertencia / Atención</td></tr>
+          <tr><td>💾</td><td>Memoria microSD (puede ser accesorio adquirido por separado)</td></tr>
+          <tr><td>🚫</td><td>Prohibido</td></tr>
+          <tr><td>✅</td><td>Correcto</td></tr>
+          <tr><td>♻️</td><td>Desechar correctamente</td></tr>
+          <tr><td>🟩</td><td>Puesta a tierra funcional</td></tr>
+          <tr><td>💧</td><td>Impermeable</td></tr>
+        </tbody>
+      </table>
+      <p class="hint">Algunos pasos pueden omitirse si no aplican al montaje elegido.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="y"></span> — Agronomía Inteligente SRL · CámarasWifi
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

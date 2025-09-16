@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Anexo A1 — Instalación solar integrada (Domo)</title>
+  <meta name="description" content="Manual de instalación paso a paso para la cámara Domo solar: advertencias, componentes, anclajes, montaje y colocación." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root{
+      --white:#ffffff; --black:#111111; --yellow:#ffd400; --red:#e10600;
+      --line:#ececec; --muted:#444; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--white); color:var(--black);
+      font:400 16px/1.55 system-ui, Inter, Roboto, Arial, sans-serif;}
+    h1,h2,h3{margin:0; line-height:1.2}
+    p{margin:.4rem 0}
+    a{color:inherit; text-decoration:none}
+    .muted{color:var(--muted)}
+
+    .max{max-width:1100px; margin-inline:auto; padding:20px}
+    @media (min-width:760px){ .max{padding:28px} }
+    .section{margin-block:22px}
+    @media (min-width:760px){ .section{margin-block:28px} }
+
+    header.hero{border-bottom:3px solid var(--yellow); background:var(--white)}
+    .hero-row{display:grid; gap:12px; align-items:center; grid-template-columns:auto 1fr; padding-block:10px}
+    .title-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .logo{width:120px; height:120px; border-radius:12px; object-fit:contain; border:1px solid var(--line)}
+    @media (max-width:480px){ .logo{width:96px; height:96px} }
+    h1{font-size: clamp(24px, 5.2vw, 40px)}
+    .brand{display:inline-flex; align-items:center; gap:8px; font-weight:800; background:var(--yellow); color:var(--black); padding:6px 12px; border-radius:999px}
+    .sub{color:var(--muted); margin-top:4px}
+
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; font-weight:800; border-radius:12px; border:2px solid var(--yellow); background:var(--yellow); color:var(--black)}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px}
+
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    @media (min-width:760px){ .card{padding:22px} }
+    .list{margin-top:8px; padding-left:18px}
+    .callout{border:1px solid var(--yellow); background:#fffdf0; border-radius:12px; padding:12px; font-weight:700; margin-top:10px}
+    .danger{border-color:var(--red); background:#fff4f4}
+    .grid{display:grid; gap:14px}
+    .cols-2{grid-template-columns:1fr}
+    @media (min-width:760px){ .cols-2{grid-template-columns:repeat(2,1fr)} }
+    footer{border-top:1px solid var(--line); text-align:center; font-size:14px; color:var(--muted); margin-top:28px; padding:16px}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="max hero-row">
+      <img class="logo" src="logo.png" alt="Logo de la empresa">
+      <div>
+        <div class="title-row">
+          <h1>Anexo A1 — Instalación solar integrada</h1>
+          <span class="brand">Modelo Domo</span>
+        </div>
+        <p class="sub">Guía completa de montaje, colocación y recomendaciones para instalación en poste/torre.</p>
+        <div class="btnrow" style="margin-top:8px">
+          <a class="btn" href="index.html">← Volver al índice</a>
+          <button class="btn" onclick="window.print()">🖨 Imprimir / Guardar PDF</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max" role="main">
+    <!-- Advertencias -->
+    <section class="section card">
+      <h2>Advertencias de seguridad</h2>
+      <ul class="list">
+        <li>Utilizar arnés, casco y elementos de protección personal.</li>
+        <li>Verificar que el poste esté firme y el área de trabajo despejada.</li>
+        <li>No instalar cerca de cables de alta tensión.</li>
+      </ul>
+      <div class="callout danger">Realizar evaluación de riesgos antes de excavar o subir a la torre/poste.</div>
+    </section>
+
+    <!-- Componentes -->
+    <section class="section card">
+      <h2>Componentes del sistema</h2>
+      <ul class="list">
+        <li>Cámara domo solar integrada.</li>
+        <li>Panel solar en carcasa superior (orientable).</li>
+        <li>Gabinete y base de fijación.</li>
+        <li>Juego de abrazaderas metálicas.</li>
+      </ul>
+    </section>
+
+    <!-- Anclajes -->
+    <section class="section card">
+      <h2>Anclajes recomendados</h2>
+      <p>Para postes de madera o metal, usar:</p>
+      <ul class="list">
+        <li>Abrazaderas de acero galvanizado.</li>
+        <li>Pernos de expansión (en muros de concreto).</li>
+        <li>Grava en base para permitir drenaje.</li>
+      </ul>
+    </section>
+
+    <!-- Ensamblado -->
+    <section class="section card">
+      <h2>Ensamblado</h2>
+      <ol class="list">
+        <li>Retirar el equipo de la caja siguiendo el orden indicado.</li>
+        <li>Colocar la cámara en la base de montaje y asegurar con tuercas.</li>
+        <li>Orientar el panel solar hacia el norte y ajustar el ángulo a 45°.</li>
+      </ol>
+    </section>
+
+    <!-- Colocación -->
+    <section class="section card">
+      <h2>Colocación en poste/torre</h2>
+      <p>Altura recomendada: 5–15 m. Asegurar la verticalidad del poste.</p>
+      <ul class="list">
+        <li>Insertar poste a 120 cm de profundidad.</li>
+        <li>Rellenar con grava y luego cemento hasta 50 mm antes de la superficie.</li>
+        <li>Colocar grava superior para drenaje y evitar humedad.</li>
+      </ul>
+    </section>
+
+    <!-- Recomendaciones de instalación -->
+    <section class="section card">
+      <h2>Recomendaciones adicionales</h2>
+      <ul class="list">
+        <li>No instalar bajo árboles que generen sombra.</li>
+        <li>No montar en caños o postes de poco espesor sin fijación adecuada.</li>
+        <li>Evitar que el panel quede orientado en dirección distinta al norte.</li>
+      </ul>
+      <img src="a1-ejemplos-no.png" alt="Ejemplos de instalación incorrecta">
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="y"></span> — Agronomía Inteligente SRL · CámarasWifi
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

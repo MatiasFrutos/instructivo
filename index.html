@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Instructivo para Tercerizados — Index</title>
+  <meta name="description" content="Guía clara para técnicos tercerizados: preparación, instalación, verificación, anexos y entrega." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root{
+      --white:#ffffff; --black:#111111; --yellow:#ffd400; --red:#e10600;
+      --line:#ececec; --muted:#444; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.06);
+      --wf-gap:14px; --wf-pad:8px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--white); color:var(--black);
+      font:400 16px/1.55 system-ui, Inter, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    h1,h2,h3,h4{margin:0; line-height:1.2}
+    p{margin:.4rem 0}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; height:auto; display:block}
+    .muted{color:var(--muted)}
+    .max{max-width:1100px; margin-inline:auto; padding:20px}
+    @media (min-width:760px){ .max{padding:28px} }
+    .section{margin-block:22px}
+    @media (min-width:760px){ .section{margin-block:28px} }
+    header.hero{border-bottom:3px solid var(--yellow); background:var(--white)}
+    .hero-row{display:grid; gap:12px; align-items:center; grid-template-columns:auto 1fr; padding-block:10px}
+    .title-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .logo{width:120px; height:120px; border-radius:12px; object-fit:contain; border:1px solid var(--line)}
+    @media (max-width:480px){ .logo{width:100px; height:100px} }
+    h1{font-size: clamp(24px, 5.2vw, 40px)}
+    .brand{display:inline-flex; align-items:center; gap:8px; font-weight:800; background:var(--yellow); color:var(--black); padding:6px 12px; border-radius:999px}
+    .sub{color:var(--muted); margin-top:4px}
+    .grid{display:grid; gap:14px}
+    .cols-3{grid-template-columns:1fr}
+    .cols-4{grid-template-columns:1fr}
+    @media (min-width:760px){
+      .cols-3{grid-template-columns:repeat(3,1fr)}
+      .cols-4{grid-template-columns:repeat(4,1fr)}
+    }
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    @media (min-width:760px){ .card{padding:22px} }
+    .kpi{display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; padding:12px; border:1px solid var(--line); border-radius:12px; background:#fff}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:4px 10px; border:1px solid var(--line); border-radius:999px; font-size:12.5px; font-weight:700; background:#fff}
+    .badge--obligatorio{color:var(--red); border-color:var(--red)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 16px; font-weight:800; border-radius:12px; border:2px solid var(--yellow); background:var(--yellow); color:var(--black)}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .btnrow .btn{flex:1 1 160px}
+    .req-grid{display:grid; gap:12px; grid-template-columns:1fr}
+    @media (min-width:560px){ .req-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (min-width:1000px){ .req-grid{grid-template-columns:repeat(3,1fr)} }
+    .req{border-radius:12px; padding:12px; font-size:14px; font-weight:700; background:#fff7bf; border:1px solid var(--yellow)}
+    .tile{border:1px solid var(--line); border-radius:var(--radius); background:#fff; box-shadow:var(--shadow); padding:14px; display:grid; gap:8px; align-content:start}
+    .tile h4{margin:0; font-size:15px}
+    .wf-card{ padding:22px clamp(10px, 3vw, 26px); }
+    .wf-wrap{ width:100%; margin-inline:auto; }
+    .wf-grid{ display:grid; gap:var(--wf-gap); grid-template-columns:1fr; align-items:stretch; }
+    @media (min-width:980px){ .wf-grid{ grid-template-columns:repeat(4, minmax(160px, 1fr)); } }
+    .wf-step{ position:relative; display:grid; grid-template-columns:auto 1fr; column-gap:10px; align-items:center; border:2px solid var(--yellow); border-radius:12px; background:#fff; padding:var(--wf-pad); min-height:84px; box-shadow:var(--shadow); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease; }
+    .wf-step:focus-within, .wf-step:hover{ transform:translateY(-1px); box-shadow:0 10px 26px rgba(0,0,0,.08) }
+    .wf-step[aria-current="true"]{ border-width:3px }
+    .wf-ico{ width:22px; height:22px }
+    .wf-step h3{ font-size: clamp(14px, 1.1vw, 16px); margin:0 }
+    .wf-step p{ color:var(--muted); margin:.3rem 0 0; font-size:12.5px; line-height:1.25 }
+    .wf-step:not(:last-child)::after{ content:""; position:absolute; left:22px; bottom:-10px; width:2px; height:10px; background:#111; border-radius:2px; }
+    .wf-step:not(:last-child)::before{ content:""; position:absolute; left:17px; bottom:-16px; border-left:6px solid transparent; border-right:6px solid transparent; border-top:8px solid #111; }
+    @media (min-width:980px){
+      .wf-step:not(:last-child)::after{ left:auto; right:-14px; top:50%; bottom:auto; width:14px; height:2px; transform:translateY(-50%); }
+      .wf-step:not(:last-child)::before{ left:auto; right:-22px; top:50%; bottom:auto; transform:translateY(-50%); border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:8px solid #111; }
+    }
+    .wf-detail{ display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:12px; padding:10px; background:#fff; box-shadow:var(--shadow); margin-top:12px }
+    .wf-detail svg{flex:0 0 20px; width:20px; height:20px}
+    .wf-detail h3{margin:0 0 4px 0; font-size:15px}
+    .wf-detail ul{margin:0; padding-left:18px}
+    .wf-detail li{font-size:13.5px}
+    .accordion{border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); background:#fff}
+    .acc-item + .acc-item{border-top:1px solid var(--line)}
+    .acc-header{width:100%; background:#fff; border:0; padding:14px 16px; font-weight:800; font-size:16px; text-align:left; display:flex; align-items:center; gap:10px; cursor:pointer}
+    .acc-header:focus{outline:2px solid var(--yellow); outline-offset:-2px}
+    .acc-icon{flex:0 0 24px; height:24px}
+    .acc-chevron{margin-left:auto; transition:transform .2s ease}
+    .acc-panel{display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; background:#fff}
+    .acc-panel > div{overflow:hidden}
+    .acc-item[aria-expanded="true"] .acc-panel{grid-template-rows:1fr}
+    .acc-item[aria-expanded="true"] .acc-chevron{transform:rotate(180deg)}
+    .acc-list{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+    .acc-row{display:flex; align-items:flex-start; gap:10px; padding:10px; border:1px solid var(--line); border-radius:10px; background:#fff}
+    .acc-row svg{flex:0 0 20px}
+    .g-grid{display:grid; gap:12px; grid-template-columns:1fr; margin-top:10px}
+    @media (min-width:600px){ .g-grid{grid-template-columns:repeat(3,1fr)} }
+    .g-item{background:#fff7bf; border:1px solid var(--yellow); border-radius:12px; padding:14px; text-align:center; font-weight:800}
+    .g-item small{display:block; color:var(--muted); font-weight:600}
+    footer{border-top:1px solid var(--line); text-align:center; font-size:14px; color:var(--muted); margin-top:28px; padding:16px}
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+    <div class="max hero-row">
+      <img class="logo" src="logo.png" alt="Logo de la empresa">
+      <div>
+        <div class="title-row">
+          <h1>Instructivo para Tercerizados</h1>
+          <span class="brand">Guía oficial</span>
+        </div>
+        <p class="sub">Instalación y verificación de cámaras · preparación, montaje, medición y entrega con confirmación remota.</p>
+      </div>
+    </div>
+
+    <div class="max">
+      <div class="grid cols-3">
+        <div class="kpi"><span class="badge">Paso 1</span><div><strong>Preparación</strong><div class="muted" style="font-size:13.5px">Ubicación, estructura, herramientas.</div></div><span class="badge badge--obligatorio">Obligatorio</span></div>
+        <div class="kpi"><span class="badge">Paso 2</span><div><strong>Instalación</strong><div class="muted" style="font-size:13.5px">Altura 5–15 m · Panel al Norte.</div></div><span class="badge">Buenas prácticas</span></div>
+        <div class="kpi"><span class="badge">Paso 3</span><div><strong>Verificación</strong><div class="muted" style="font-size:13.5px">Señal/tensión + fotos.</div></div><span class="badge badge--obligatorio">No omitir</span></div>
+      </div>
+
+      <nav aria-label="Secciones" class="btnrow">
+        <a class="btn" href="#flujo">Ver Flujo</a>
+        <a class="btn" href="#anexos">Anexos</a>
+        <a class="btn" href="#entrega">Entrega y Pagos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max" role="main">
+    <section class="section card wf-card" id="flujo" aria-labelledby="t-flujo">
+      <h2 id="t-flujo">Flujo de trabajo</h2>
+
+      <div class="wf-wrap">
+        <div class="wf-grid" id="wf-grid">
+          <article class="wf-step" data-step="prep" tabindex="0" role="button" aria-current="true" aria-label="Preparación (tocar para ver detalle)">
+            <svg class="wf-ico" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="6" y="8" width="36" height="32" rx="6" fill="#fff" stroke="#111" stroke-width="2"/>
+              <rect x="16" y="10" width="16" height="6" rx="2" fill="#111"/>
+              <line x1="14" y1="22" x2="34" y2="22" stroke="#111" stroke-width="2"/>
+              <line x1="14" y1="28" x2="34" y2="28" stroke="#111" stroke-width="2"/>
+              <line x1="14" y1="34" x2="28" y2="34" stroke="#111" stroke-width="2"/>
+            </svg>
+            <div><h3>Preparación</h3><p>Ubicación · Herramientas · Plan</p></div>
+          </article>
+
+          <article class="wf-step" data-step="inst" tabindex="0" role="button" aria-label="Instalación (tocar para ver detalle)">
+            <svg class="wf-ico" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M20 36 L38 18 M34 14 a8 8 0 1 1-11 11" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="8" y="32" width="16" height="6" rx="3" fill="#111"/>
+            </svg>
+            <div><h3>Instalación</h3><p>Altura · Fijaciones · Panel Norte</p></div>
+          </article>
+
+          <article class="wf-step" data-step="veri" tabindex="0" role="button" aria-label="Verificación (tocar para ver detalle)">
+            <svg class="wf-ico" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="18" fill="none" stroke="#111" stroke-width="3"/>
+              <path d="M16 24l6 6 12-14" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div><h3>Verificación</h3><p>RSRP/RSRQ/SINR · 12V · Fotos</p></div>
+          </article>
+
+          <article class="wf-step" data-step="entr" tabindex="0" role="button" aria-label="Entrega (tocar para ver detalle)">
+            <svg class="wf-ico" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="8" y="14" width="32" height="22" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+              <path d="M8 22h32M20 14v8" stroke="#111" stroke-width="2"/>
+              <path d="M16 30h12" stroke="#111" stroke-width="2"/>
+            </svg>
+            <div><h3>Entrega</h3><p>Confirmación · Pago</p></div>
+          </article>
+        </div>
+
+        <div id="wf-detail" class="wf-detail" aria-live="polite">
+          <svg id="wf-detail-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+          <div>
+            <h3 id="wf-detail-title">Preparación</h3>
+            <ul id="wf-detail-list" class="clean">
+              <li>Confirmar ubicación y estructura (poste/torre).</li>
+              <li>Escalera ≥7 m, arnés, cuerdas, notebook + UTP ≥15 m.</li>
+              <li>Revisar imagen satelital y accesos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card" aria-labelledby="t-req">
+      <h2 id="t-req">Requisitos indispensables</h2>
+      <div class="req-grid" style="margin-top:10px">
+        <div class="req">✔ Confirmar ubicación exacta y acceso al sitio</div>
+        <div class="req">🛠 Herramientas listas: escalera, arnés, notebook</div>
+        <div class="req">📷 Tomar fotos de montaje, cableado y conexiones</div>
+        <div class="req">⚡ Medir tensión de fuente y comprobar señal</div>
+        <div class="req">🌐 Enviar capturas y esperar confirmación oficina</div>
+        <div class="req">🔒 Colocar protección anti-cotorras en cables</div>
+      </div>
+    </section>
+
+    <!-- ANEXOS (enlaces corregidos a tus archivos) -->
+    <section class="section" id="anexos" aria-labelledby="t-anexos">
+      <h2 id="t-anexos">Anexos Técnicos</h2>
+      <div class="grid cols-4" style="margin-top:10px">
+        <article class="tile"><h4>A1 — Domo</h4><p class="muted" style="margin:0">Instalación solar paso a paso.</p><a class="btn" href="anexoa1.html">Abrir</a></article>
+        <article class="tile"><h4>A1 — Fija</h4><p class="muted" style="margin:0">Guía para versión fija.</p><a class="btn" href="anexoa11.html">Abrir</a></article>
+        <article class="tile"><h4>A2 — Instalación rápida</h4><p class="muted" style="margin:0">Componentes, montaje, señal.</p><a class="btn" href="anexoa2.html">Abrir</a></article>
+        <article class="tile"><h4>B — Herramientas</h4><p class="muted" style="margin:0">Listados para poste y torre.</p><a class="btn" href="anexob.html">Abrir</a></article>
+        <article class="tile"><h4>C2 — Verificación de señal</h4><p class="muted" style="margin:0">Puerta de enlace y calidad.</p><a class="btn" href="anexoc2.html">Abrir</a></article>
+        <article class="tile"><h4>C3 — Potencia radioenlace</h4><p class="muted" style="margin:0">RSRP/RSRQ/SINR.</p><a class="btn" href="anexoc3.html">Abrir</a></article>
+        <article class="tile"><h4>C4 — Tensión (B311)</h4><p class="muted" style="margin:0">Medición con multímetro.</p><a class="btn" href="anexoc4.html">Abrir</a></article>
+        <article class="tile"><h4>D1 — Protección de cables</h4><p class="muted" style="margin:0">Tubo corrugado y cinta.</p><a class="btn" href="anexod.html">Abrir</a></article>
+      </div>
+    </section>
+
+    <section class="section" id="entrega" aria-labelledby="t-entrega">
+      <h2 id="t-entrega">Entrega y Pagos</h2>
+      <div class="accordion" style="margin-top:10px">
+        <div class="acc-item" aria-expanded="false">
+          <button class="acc-header" aria-controls="panel-retirarte" aria-expanded="false">
+            <svg class="acc-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M8 2h8v4H8z"></path>
+            </svg>
+            Antes de retirarte (validaciones finales)
+            <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="acc-panel" id="panel-retirarte" role="region" aria-hidden="true">
+            <div>
+              <ul class="acc-list">
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
+                  </svg>
+                  <div><strong>Fotos y ubicación</strong><p class="muted">Capturá <b>montaje</b>, <b>cableado</b>, <b>conexiones</b> y una toma amplia de la <b>ubicación final</b>.</p></div>
+                </li>
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 20h2M2 20a18 18 0 0 1 18-18v2"/><path d="M2 16h2a14 14 0 0 1 14-14v2"/><path d="M2 12h2a10 10 0 0 1 10-10v2"/>
+                  </svg>
+                  <div><strong>Mediciones</strong><p class="muted">Subí captura de <b>RSRP/RSRQ/SINR</b> y de <b>tensión 12 V</b> (y reguladores si aplica).</p></div>
+                </li>
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  <div><strong>Protección de cables</strong><p class="muted">Aplicá <b>tubo corrugado</b> o <b>cinta vulcanizada</b> donde sea necesario.</p></div>
+                </li>
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 17.58A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 4 16.25"/><path d="m9 14 2 2 4-4"/>
+                  </svg>
+                  <div><strong>Confirmación remota</strong><p class="muted"><span style="color:var(--red); font-weight:800">No omitir:</span> esperá validación de oficina con visibilidad remota antes de cerrar.</p></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item" aria-expanded="false">
+          <button class="acc-header" aria-controls="panel-pagos" aria-expanded="false">
+            <svg class="acc-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/><path d="M16 5h3a2 2 0 0 1 2 2v3h-5z"/>
+            </svg>
+            Pagos y garantía (condiciones)
+            <svg class="acc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="acc-panel" id="panel-pagos" role="region" aria-hidden="true">
+            <div>
+              <ul class="acc-list">
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="7" cy="12" r="4"></circle><path d="M13 12h8M17 8v8"/>
+                  </svg>
+                  <div><strong>Esquema de pagos 50/50</strong><p class="muted">50 % <b>anticipado</b> previo al inicio. 50 % restante dentro de <b>72 h</b> de enviar formulario completo y recibir confirmación remota.</p></div>
+                </li>
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>
+                  </svg>
+                  <div><strong>Documentación para el segundo pago</strong><p class="muted">Adjuntar: capturas de mediciones, fotos del montaje, confirmación de visibilidad remota y formulario de entrega.</p></div>
+                </li>
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+                  </svg>
+                  <div><strong>Garantía escalonada</strong>
+                    <div class="g-grid">
+                      <div class="g-item">30 días <small>1 a 3 cámaras</small></div>
+                      <div class="g-item">60 días <small>1 a 6 cámaras</small></div>
+                      <div class="g-item">120 días <small>1 a 12 cámaras</small></div>
+                    </div>
+                  </div>
+                </li>
+                <li class="acc-row">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"/>
+                  </svg>
+                  <div><strong>Tiempos de revisión</strong><p class="muted">La verificación de evidencias puede demorar según disponibilidad de red en sitio. <span style="color:var(--red); font-weight:800">No omitir:</span> dejar la cámara visible en remoto para la validación.</p></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    © <span id="y"></span> — Agronomía Inteligente SRL · CámarasWifi
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const flowData = {
+      prep:{title:"Preparación",icon:`<rect x="3" y="4" width="18" height="16" rx="2" stroke="#111" stroke-width="2" fill="none"/><rect x="7" y="2" width="10" height="4" rx="1" fill="#111"/><path d="M7 10h10M7 14h10M7 18h8" stroke="#111" stroke-width="2"/>`,
+        list:["Confirmar ubicación y estructura (poste/torre).","Escalera ≥7 m, arnés, cuerdas, notebook + UTP ≥15 m.","Revisar imagen satelital y accesos."]},
+      inst:{title:"Instalación",icon:`<path d="M10 18 L18 10 M16 8 a6 6 0 1 1-8 8" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="16" width="8" height="3" rx="1.5" fill="#111"/>`,
+        list:["Altura 5–15 m según cobertura.","Panel solar orientado al norte (≈45°).","Fijaciones firmes y caja estanca."]},
+      veri:{title:"Verificación",icon:`<circle cx="12" cy="12" r="9" fill="none" stroke="#111" stroke-width="2"/><path d="M8 12l3 3 5-6" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+        list:["Medir señal (RSRP/RSRQ/SINR) y tensión (12 V).","Enviar fotos de montaje y conexiones.","<b style='color:#e10600'>No omitir</b>: esperar confirmación remota."]},
+      entr:{title:"Entrega",icon:`<rect x="4" y="7" width="16" height="12" rx="2" fill="none" stroke="#111" stroke-width="2"/><path d="M4 11h16M10 7v4" stroke="#111" stroke-width="2"/>`,
+        list:["Confirmación de visibilidad remota por oficina.","Pago según esquema 50/50 una vez enviado el formulario."]}
+    };
+
+    const steps=document.querySelectorAll('.wf-step[data-step]');
+    const detailTitle=document.getElementById('wf-detail-title');
+    const detailIcon=document.getElementById('wf-detail-icon');
+    const detailList=document.getElementById('wf-detail-list');
+
+    function setActive(step){
+      steps.forEach(n=>n.setAttribute('aria-current', n.dataset.step===step?'true':'false'));
+      const d=flowData[step]; detailTitle.textContent=d.title; detailIcon.innerHTML=d.icon;
+      detailList.innerHTML=d.list.map(li=>`<li>${li}</li>`).join('');
+    }
+    steps.forEach(n=>{
+      n.addEventListener('click',()=>setActive(n.dataset.step));
+      n.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); setActive(n.dataset.step);} });
+    });
+
+    document.querySelectorAll('.acc-header').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const item=btn.closest('.acc-item'); const panel=item.querySelector('.acc-panel');
+        const open=item.getAttribute('aria-expanded')==='true';
+        item.setAttribute('aria-expanded', String(!open));
+        btn.setAttribute('aria-expanded', String(!open));
+        panel.setAttribute('aria-hidden', String(open));
+      });
+    });
+  </script>
+</body>
+</html>
